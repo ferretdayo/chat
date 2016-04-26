@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Socket.IO chat</title>
+		<style>
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+			body { font: 13px Helvetica, Arial; }
+			form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+			#m { border: 0; padding: 10px; width: 60%; margin-right: .5%; }
+			#n { border: 0; padding: 10px; width: 30%; margin-right: .5%; }
+			form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px 0 10px 0; }
+			#messages { list-style-type: none; margin: 0; padding: 0; }
+			#messages li { padding: 5px 10px; }
+		</style>
+	</head>
+	<body>
+		<ul id="messages"></ul>
+		<form action="">
+			<input id="n" type="text" autocomplete="off" placeholder="name"><input id="m" autocomplete="off" placeholder="message"/><button>Send</button>
+		</form>
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script>
+    var username = "";
+    var bgcolor = "";
+    //sessionStorageにユーザがない場合
+    if(window.sessionStorage.lenth == 0){
+		location.href = "http://192.168.33.10:3000/";
+    }else{
+		//ユーザ名が登録されている場合
+		username = window.sessionStorage.getItem("username");
+		bgcolor = window.sessionStorage.getItem("bgcolor");
+		$('#n').val(username);
+		$('#n').css('background', bgcolor);
+    }
+	
+    var socket = io();
+    $('form').submit(function(){
+		//chat messageの発火
+		socket.emit('chat message', {name: $('#n').val(), message: $('#m').val(), bgcolor: bgcolor});
+		//messageの入力部の初期化
+		$('#m').val('');
+		//ユーザ名が変わっている場合は，sessionStorageのユーザ名も上書き
+		if($('#n').val() != username){
+			window.sessionStorage.setItem("username", $('#n').val());
+		}
+		return false;
+    });
+    //chat messageが発火されたときに実行
+    socket.on('chat message', function(msg){
+		var list = '<li style="background:'+ msg.bgcolor + ';"><span style="border: solid 1px #000000; background: #ffffff; margin: 0 5px 0 0; padding: .5px 2px .5px 1px;">' + msg.name + '</span>' + msg.message;
+		$('#messages').append(list);
+    });
+	</script>
+</html>

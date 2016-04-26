@@ -1,0 +1,20 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "forever": "^0.15.1",
+    "gulp": "^3.9.1",
+    "socket.io": "^1.4.5"
+  },
+  "description": ""
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Socket.IO chat</title>
+		<style>
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+			body { font: 13px Helvetica, Arial; }
+			div.login { background: #000; padding: 3px; width: 100%; display:relative;}
+			input #username { display: absolute; margin: auto; top: 0px; buttom: 0px; width:100%;}
+			#username { border: 0; padding: 10px; width: 70%; margin-right: .5%; margin: 0 1px 0 40px;}
+			div button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px 0 10px 0; }
+		</style>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<img src="/header" style="width: 100%;">
+		ユーザのコメント背景色 : <input type="color" value="#ffffff" id="bgcolor" oninput="changeBackground(bgcolor.value)">
+		<div class="login">
+			<input id="username" autocomplete="off" placeholder="username"/><button onclick="login()">Login</button>
+		</div>
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		function login(){
+			//入力チェック
+			if($('#username').val() === ""){
+				alert("ユーザ名を入力してください");
+			}else{
+				//ユーザ名とコメント背景色の保存
+				var username = $('#username').val();
+				var bgcolor = $('#bgcolor').val();
+				window.sessionStorage.setItem("username", username);
+				window.sessionStorage.setItem("bgcolor", bgcolor);
+				location.href = "http://192.168.33.10:3000/chat/";
+			}
+		}
+		//選択された色が変化したときに実行する
+		function changeBackground(colorValue){
+			$('#username').css("background", colorValue);
+		}
+	</script>
+</html>
