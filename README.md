@@ -11,6 +11,6 @@ socket.ioの勉強
 
 # 実行結果
 
-![ログインページ](http://imgur.com/pC3LikN)
+![ログインページ](http://imgur.com/pC3LikN "ログイン")
 
-![チェットページ](http://imgur.com/lyp4Qj4)
+![チェットページ](http://imgur.com/lyp4Qj4 "チャット")
