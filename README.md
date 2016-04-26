@@ -8,3 +8,9 @@ socket.ioの勉強
   $ npm init
   
   $ forever start index.js
+
+# 実行結果
+
+![ログインページ](http://imgur.com/pC3LikN)
+
+![チェットページ](http://imgur.com/lyp4Qj4)
