@@ -11,8 +11,6 @@ socket.ioの勉強
 
 # 実行結果
 
-![ヘッダー](header.JPG)
+![ログイン画面](./readme/background.png)
 
-<img src="http://imgur.com/pC3LikN">
-
-<img src="http://imgur.com/lyp4Qj4">
+![チャット画面](./readme/chatttt.png)
