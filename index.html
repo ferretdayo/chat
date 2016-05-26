@@ -31,7 +31,7 @@
 				var bgcolor = $('#bgcolor').val();
 				window.sessionStorage.setItem("username", username);
 				window.sessionStorage.setItem("bgcolor", bgcolor);
-				location.href = "http://192.168.33.10:3000/chat/";
+				location.href = "http://" + location.hostname + ":3000/chat/";
 			}
 		}
 		//選択された色が変化したときに実行する
