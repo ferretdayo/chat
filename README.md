@@ -5,7 +5,7 @@ socket.ioの勉強
 
   $ git clone https://github.com/ferretdayo/chat.git
   
-  $ npm init
+  $ npm i
   
   $ forever start index.js
 
