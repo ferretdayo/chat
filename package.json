@@ -14,7 +14,8 @@
     "browser-sync": "^2.11.1",
     "forever": "^0.15.1",
     "gulp": "^3.9.1",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.5",
+    "validator": "^5.4.0"
   },
   "description": ""
 }

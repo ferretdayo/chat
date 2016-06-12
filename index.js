@@ -2,6 +2,9 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
+var validator = require("validator");
+var sanitize = validator.sanitize;
+
 //Login
 app.get('', function(req, res){
   res.sendfile('index.html');
@@ -22,6 +25,7 @@ app.get('/header', function(req, res){
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('chat message', function(msg){
+    msg.message = validator.escape(msg.message);
     io.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
