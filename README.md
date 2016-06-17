@@ -9,6 +9,8 @@ socket.ioの勉強
   
   $ forever start index.js
 
+  $ http://localhost:3000
+
 # 実行結果
 
 ログイン画面
